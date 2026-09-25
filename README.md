@@ -14,6 +14,10 @@ Meera has good ideas in rough form ("batch fourteen came back and the pH looked 
 Meera sends a rough note on Telegram
         │
         ▼
+0. SCORE       Gemini scores the note 0-10 for whether it holds a publishable idea
+        │      └─ below 6 (task reminders, half-thoughts, vague topics) → reply with the
+        │         score and reason, no draft
+        ▼
 1. DRAFT       Gemini writes the post using her system prompt + 2 example posts
         │
         ▼
@@ -40,6 +44,20 @@ Meera sends a rough note on Telegram
 | Voice moves | Has a short 2–8 word verdict sentence and an "I'm not saying X. What I'm saying is Y." line |
 | Call to action | Points the reader at "any brand", never a purchase |
 | Facts | No claim beyond what the note says (LLM fact-check) |
+
+### Note scoring (`score_note()` in `bot.py`)
+
+| Test note | Score | Result |
+|---|---|---|
+| Batch 14 pH drop from a supplier's preservative change | 10 | Drafted |
+| Retinol: clear jar vs airless pump, 8-week test | 10 | Drafted |
+| Trade-fair "clinically tested" encounter | 9 | Drafted |
+| "should write something about sunscreen myths" | 4 | Rejected (too vague) |
+| "do customers even care about pH? not sure" | 2 | Rejected (question to self) |
+| "remind me to call the manufacturer tomorrow..." | 1 | Rejected (task reminder) |
+| "was thinking about how niacinamide and... never mind" | 1 | Rejected (abandoned thought) |
+
+Each note was scored twice and got the same score both times. The pass mark is 6.
 
 ## Commands (on Telegram)
 

@@ -211,6 +211,39 @@ def fact_check(post, note):
         return []
 
 
+SCORING_PROMPT = """You are the gatekeeper for Meera Pillai's content pipeline. Meera (founder of the
+Indian skincare brand Skinstinct, ex-pharmaceutical formulator) sends raw notes; only notes that
+can become a strong LinkedIn post or newsletter in her voice should be drafted. Drafting is
+expensive and a weak note produces a weak, padded post. Be strict: most quick messages fail.
+
+Score the note 0-10 on whether it contains a publishable idea:
+9-10  A specific event, finding or decision (her own data, a batch, a test, a conversation) PLUS
+      a clear point about formulation, labelling, testing, manufacturing or the industry, with
+      concrete details (numbers, ingredients, what happened, what she concluded).
+6-8   A clear, substantive point with some concrete detail; a post can be written without
+      inventing facts, even if it needs tightening.
+4-5   A real topic but too vague or generic to write from without inventing the substance
+      (e.g. "should write something about sunscreen myths").
+1-3   Logistics, task reminders, to-dos, scheduling, admin, a question to herself, or an
+      abandoned / half-finished thought with no point yet.
+0     Empty, gibberish, or unrelated to her work.
+
+Score the IDEA, not the writing quality - rough grammar and filler words are fine.
+Return JSON only: {"score": <integer 0-10>, "reason": "<one sentence, max 25 words>"}"""
+
+PASS_SCORE = 6
+
+
+def score_note(note):
+    """Returns (score, reason). On a malformed reply, fails closed with score 0."""
+    raw = gemini(SCORING_PROMPT, [("user", "NOTE:\n" + note)], json_mode=True)
+    try:
+        data = json.loads(raw)
+        return max(0, min(10, int(data["score"]))), str(data["reason"]).strip()
+    except (ValueError, KeyError, TypeError):
+        return 0, "Could not score this note - please try sending it again."
+
+
 def remove_sentences(post, quotes):
     """Delete every sentence containing one of the quotes. Returns (post, removed, not_found)."""
     removed, found = [], set()
@@ -294,12 +327,20 @@ def handle(message):
     else:
         note, wanted = text, ("linkedin",)
 
-    if len(note) < 20:
+    if not note:
         send_text(chat_id, "Add your note after the command, e.g. /newsletter batch fourteen came back...")
         return
 
-    send_text(chat_id, "Got it. Drafting and checking against your QA list - about 30-60 seconds.")
     try:
+        score, reason = score_note(note)
+        log(f"Scored {score}/10: {reason}")
+        if score < PASS_SCORE:
+            send_text(chat_id, f"No draft made - this note scored {score}/10 (needs {PASS_SCORE}+).\n"
+                               f"Why: {reason}\n\nSend a note with a specific event, finding or "
+                               "decision and the point you want to make.")
+            return
+        send_text(chat_id, f"Note scored {score}/10 - {reason}\n\nDrafting and checking against "
+                           "your QA list - about 30-60 seconds.")
         if "linkedin" in wanted:
             tg("sendChatAction", chat_id=chat_id, action="typing")
             post, failures, warnings, revisions = write_linkedin(note)
