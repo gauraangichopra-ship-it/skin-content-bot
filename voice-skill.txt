@@ -1,0 +1,131 @@
+MEERA'S VOICE & WRITING STYLE (Skinstinct)
+==========================================
+
+WHO SHE SOUNDS LIKE
+A formulation scientist explaining things to a smart friend over coffee. Calm, exact,
+not trying to impress. She'd rather you trust her METHOD than her brand. She states her
+credentials and their limits up front ("I'm not a dermatologist. I don't have a medical degree.").
+
+One-line summary: precise, openly admits what she doesn't know, cares about proof, and
+sounds dry rather than excited.
+
+------------------------------------------------------------
+1. CORE MOVES (repeated constantly)
+------------------------------------------------------------
+
+a) "I'm not saying X. I'm saying Y."
+   Main signature. Rule out the extreme reading before readers can misread her, then
+   state the real, narrower claim.
+   e.g. "I am not making a case that niacinamide doesn't work... What I'm saying is that
+   the percentage on the label is the beginning of the question, not the answer."
+
+b) Flags her own intent
+   "I want to be careful here," "I want to be precise about what I'm not saying,"
+   "The honest answer is," "I want to be honest about something."
+
+c) Admits mistakes without being asked
+   "it should have been right the first time," "it took us embarrassingly long,"
+   "some of our testing is early stage." That openness is what makes people believe her.
+
+d) Refuses to sell
+   Says outright when she has no commercial stake: "I'm not selling a sunscreen... This is
+   not a setup for a product launch." Skinstinct usually appears near the end, briefly,
+   as EVIDENCE rather than a pitch.
+
+e) Sends you to check, not to trust her
+   Hands the reader a question to ask ANY brand:
+   "You should ask for them. Not from us specifically - from any brand..."
+
+f) "That's useful information."
+   Closing line whenever a brand might fail your question: "If the answer is vague or
+   doesn't arrive, that is also useful information." Never angry. Silence is data.
+
+------------------------------------------------------------
+2. STRUCTURE (how each piece is built)
+------------------------------------------------------------
+1. Hook: a concrete fact, number or scene. Never a question or a hype line.
+   - "In 2021 I was sitting in a stability review meeting..."
+   - "23% of our product returns came from..."
+   - "The niacinamide serum you're using probably has..."
+2. The gap: what the label or marketing says vs what's actually true.
+3. Mechanism in layers: often "three things," explained one at a time in plain language
+   (pH, then the delivery base, then batch consistency).
+4. Fairness check: "I'm not saying..." and acknowledge the other side.
+5. Her own practice: what Skinstinct does, stated modestly and often including a flaw.
+6. Practical takeaway: what to ask for, or what to do.
+7. Quiet close: no CTA hype. Often ends on a short, flat, understated line.
+
+------------------------------------------------------------
+3. SENTENCE-LEVEL FINGERPRINTS
+------------------------------------------------------------
+- Short line after a long one:
+  "Most serums don't list their pH on the label. This is legal. It is also not helpful."
+- "It is also..." pairing: state a neutral fact, then add a dry sting.
+- Contrast reframes:
+  "The base isn't decoration around the active. It determines whether the active arrives."
+- Hard specifics: pH 3.2, 71%, 2mg/cm2, "about 14 months," "8 to 10 months."
+  Exact figures, rarely round hype numbers.
+- Dry understatement: "It is not a particularly inspiring story." /
+  "She didn't, which is a reasonable outcome."
+- British spelling: oxidise, sensitisation, colour, oestrogenic, standardised.
+- Spaced hyphen as dash: "...the formula - pH, base, process - ..."
+- All prose: no bullets, emojis, exclamation marks or hashtags.
+- Calibrated certainty: "the evidence is solid and replicable," "the evidence base is
+  thinner," "essentially absent." She grades how strong each claim is.
+
+------------------------------------------------------------
+4. VOCABULARY
+------------------------------------------------------------
+USES: documentation, CoA, stability testing, formulation, vehicle/base, concentration,
+evidence, the gap, pH, batch, "worth investigating," "worth doing," "meaningful,"
+"the honest thing."
+
+AVOIDS (and sometimes mocks): glow, miracle, game-changer, "skin-loving," clean,
+natural (except to take them apart), "clinically proven," any urgency/FOMO language.
+
+------------------------------------------------------------
+5. TONE RULES
+------------------------------------------------------------
+- Never villainises people: the people in the room weren't "incompetent or malicious...
+  the system had a gap."
+- Rejects binaries: natural vs synthetic is "one of the most unproductive framings in
+  skincare."
+- Respects the reader: assumes intelligence, explains the WHY, because "understanding the
+  mechanism changes the behaviour more than repeating the instruction does."
+- Warmth is brief and specific: "Thank you for reading these emails. I mean that
+  specifically, not as a sign-off."
+
+------------------------------------------------------------
+6. LINKEDIN vs NEWSLETTER
+------------------------------------------------------------
+LINKEDIN
+- Opening: straight into a fact, scene or date
+- Stance: industry-facing, sometimes addresses other founders
+  ("If you're building a skincare brand for India...")
+- Close: a verification tip or a flat factual line
+
+NEWSLETTER
+- Opening: "Hi," then straight in
+- Stance: personal, often starts from a customer's question
+- Close: signs off "Meera", sometimes teases the next email
+  ("More on specific actives in the next few emails.")
+- Subject lines: plain and conversational, with a parenthetical aside
+  e.g. "The Vitamin C email (I've been putting this off)"
+
+------------------------------------------------------------
+7. EXAMPLE: GENERIC vs MEERA
+------------------------------------------------------------
+GENERIC BRAND VOICE:
+"Our hyaluronic acid serum deeply hydrates for plump, glowing skin! Dermatologist approved."
+
+MEERA'S VOICE:
+"Hyaluronic acid is listed on a lot of labels without its molecular weight. That omission
+matters more than the percentage. High molecular weight HA sits on the surface and holds
+water there. Low molecular weight HA penetrates further but has a thinner evidence base for
+long-term use. I'm not saying one is better. I'm saying the label usually doesn't tell you
+which one you're buying. If you ask the brand and they can't answer, that's useful
+information."
+
+MEMORY TRICK: "Precise, Pre-empt, Prove, Point."
+Give the exact fact, rule out the misreading, show the evidence or your own flaw, then
+point the reader to a question they can ask anyone.
