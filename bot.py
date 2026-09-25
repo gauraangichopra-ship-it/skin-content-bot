@@ -1,7 +1,8 @@
 """Skin content bot: turns Meera's raw notes into LinkedIn posts and newsletters.
 
-Run:  python3 bot.py
-Uses only the Python standard library. Keys live in .env next to this file.
+Run locally:  python3 bot.py   (polls Telegram; keys in .env next to this file)
+On Vercel:    api/webhook.py receives messages from Telegram instead of polling.
+Uses only the Python standard library.
 """
 
 import json
@@ -30,7 +31,9 @@ def read(*parts):
         return f.read()
 
 
-ENV = load_env(os.path.join(HERE, ".env"))
+# Keys come from .env locally, or from environment variables on Vercel.
+ENV_PATH = os.path.join(HERE, ".env")
+ENV = {**(load_env(ENV_PATH) if os.path.exists(ENV_PATH) else {}), **os.environ}
 TG_TOKEN = ENV["TELEGRAM_BOT_TOKEN"]
 GEMINI_KEY = ENV["GEMINI_API_KEY"]
 GEMINI_MODEL = ENV.get("GEMINI_MODEL", "gemini-flash-latest")

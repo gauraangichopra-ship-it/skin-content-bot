@@ -55,16 +55,23 @@ Meera sends a rough note on Telegram
 Input: [`examples/batch14_note.txt`](examples/batch14_note.txt)
 Output (post, QA report, newsletter): [`examples/batch14_output.txt`](examples/batch14_output.txt)
 
+## Live deployment
+
+Deployed on Vercel: **https://skin-content-bot.vercel.app** (open it to confirm it's running).
+Telegram sends each message to `api/webhook.py`, so the bot works 24/7 without a laptop running.
+Try it: **https://t.me/Skincontent_assignmentmesa_bot**
+
 ## Setup
 
 Needs Python 3.9+ and uses only the standard library, so there's nothing to install.
 
 1. Create a bot with [@BotFather](https://t.me/BotFather) and get a Gemini API key from [Google AI Studio](https://aistudio.google.com/apikey).
 2. Copy `.env.example` to `.env` and fill in both keys.
-3. Run the bot:
+3. Run the bot locally (polling mode):
    ```
    python3 bot.py
    ```
+   Or deploy to Vercel: `vercel deploy --prod`, add the same keys plus `TELEGRAM_WEBHOOK_SECRET` as environment variables, then point Telegram at it with `setWebhook` (`url=https://<your-app>.vercel.app/api/webhook`, `secret_token=<secret>`). Note that polling (`bot.py`) and the webhook can't run at the same time.
 4. Or test the full pipeline without Telegram:
    ```
    python3 demo.py                      # uses examples/batch14_note.txt
@@ -76,6 +83,8 @@ Needs Python 3.9+ and uses only the standard library, so there's nothing to inst
 | File | Purpose |
 |---|---|
 | `bot.py` | Telegram bot, Gemini calls, QA checks, fact-check, revision loop |
+| `api/webhook.py` | Vercel entry point: receives Telegram messages via webhook (checks a secret header) |
+| `vercel.json` | Vercel config: 300s max run time, bundles the prompts and voice guide |
 | `demo.py` | Runs the same pipeline on a text file, saves the output |
 | `prompts/linkedin_system_prompt.txt` | Meera's LinkedIn voice rules (structure, rhythm, banned words) |
 | `prompts/linkedin_examples.txt` | Two example posts used as style references |
@@ -86,5 +95,5 @@ Needs Python 3.9+ and uses only the standard library, so there's nothing to inst
 ## Limitations
 
 - The fact-check catches invented facts and numbers, but it's an LLM, so Meera should still read every post before publishing.
-- The bot runs while `bot.py` is running on a machine. It doesn't host itself.
+- A draft takes 30–60 seconds (up to 5 Gemini calls: draft, fix, fact-check, fix, re-check).
 - Text messages only (no voice notes).

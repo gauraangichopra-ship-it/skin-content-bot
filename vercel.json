@@ -1,0 +1,9 @@
+{
+  "functions": {
+    "api/webhook.py": {
+      "maxDuration": 300,
+      "includeFiles": "{bot.py,voice-skill.txt,prompts/**}"
+    }
+  },
+  "rewrites": [{ "source": "/", "destination": "/api/webhook" }]
+}
