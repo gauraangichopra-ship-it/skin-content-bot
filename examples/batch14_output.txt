@@ -1,0 +1,47 @@
+RAW NOTE
+============================================================
+Okay so batch fourteen came back from the manufacturer and the pH stability data looked off. I went back to the supplier and it turns out they quietly changed the preservative blend without notifying us - they sent a revised spec sheet three months ago but it got buried. The new preservative system is more acidic than the previous one. The finished product pH dropped by about 0.4 units which sounds small but it's enough to push us out of the optimal range for our emollient blend. The batch isn't unsafe but the texture is different in a way that I think customers will notice. We're holding it. I need to write about this because I think it illustrates something important - the assumption that a 'same formula' reorder is actually the same formula. It often isn't. Suppliers change things. If you're not checking the CoA against a baseline every batch, you won't catch it until the customer does.
+
+LINKEDIN POST (422 words)
+============================================================
+Batch 14 came back from the manufacturer, and the pH stability data looked off. When we reviewed the numbers against our baseline, the finished product pH had dropped by about 0.4 units. That sounds like a small change. In formulation chemistry, it is not.
+
+The assumption that a reorder of the exact same formula is actually the same formula is incorrect. It often is not.
+
+The first issue is that raw material suppliers change things quietly. When batch 14 came back and our stability data looked off, I went back to the supplier to investigate. It turned out they had altered their preservative blend without notifying us. A preservative blend is the ingredient system used to prevent microbial growth in a product over time. The supplier had sent a revised specification sheet three months ago, but it got buried on our side.
+
+The second thing to consider is how narrow the chemical tolerances are in a finished formulation. A drop of 0.4 pH units sounds negligible outside of a laboratory. In a formulation, it is significant. The supplier's new preservative system is more acidic than the previous one, and that extra acidity was enough to push our finished product out of the optimal range for our emollient blend - the ingredients responsible for conditioning the skin and giving the product its glide and spread. When the pH drops outside that target window, the emollient behaviour changes. The stability shifts, and the texture becomes different.
+
+I'm not saying the batch is unsafe. What I'm saying is that raw material drift directly alters how a formulation behaves on the skin, even when the formula on paper appears identical.
+
+The administrative mistake was on our side. The supplier sent a revised specification sheet three months ago, but it got buried in our records and we did not catch it before production began. The batch itself is not unsafe, but the texture is different in a way that I think customers will notice. We are holding batch 14 completely.
+
+If you ever open a replacement bottle of a skincare product you use regularly and find that the consistency or spread feels different, ask the brand whether they check the Certificate of Analysis against a baseline for every batch. Not us - ask any brand whose products you purchase. If a brand is not checking the Certificate of Analysis against a baseline with every single batch, suppliers will change things, and nobody will catch it until the customer does. That is usually where the change gets found.
+
+QA REPORT (after 2 automatic revisions)
+All hard checks passed: length, paragraphs, formatting, banned words, British spelling, no invented numbers, verdict line, guardrail, any-brand CTA, fact-check against your note.
+CHECK: Removed unsupported sentence: "Because the material still carried the expected name, manufacturing proceeded without anyone realising the underlying composition had been modified."
+Always check yourself: no selling, no medical advice, every claim is true.
+
+NEWSLETTER
+============================================================
+Subject: Why we are holding batch fourteen
+Subject: What happened to batch fourteen (and why we held it)
+
+Hi,
+
+Batch fourteen came back from the manufacturer recently, and the pH stability data looked off.
+
+The finished product pH had dropped by about 0.4 units. That sounds small. It is not. In our formulation, that drop is enough to push us out of the optimal range for our emollient blend.
+
+When I went back to the supplier, it turned out they had changed the preservative blend without notifying us. The new preservative system is more acidic than the previous one. To be fair to them, they did send a revised specification sheet three months ago. It got buried on our side. It should have been caught then, and it was not.
+
+I want to be precise about what I am not saying. I am not saying the batch is unsafe. It isn't unsafe. What I am saying is that the drop in pH altered the texture in a way that I think customers will notice. For that reason, we are holding the batch.
+
+I wanted to share this because it illustrates an assumption people often make about skincare: that a reorder of the same formula is actually the same formula. It often is not. Suppliers change things. Preservative systems shift, raw materials are adjusted, and specifications update quietly in the background.
+
+If a brand is not checking the Certificate of Analysis - the CoA - against a baseline for every single batch, they will not catch those shifts before the product ships. And if the brand does not catch it, the customer ends up doing that quality control instead.
+
+You should feel comfortable asking any brand how they verify batch-to-batch consistency against their baseline documentation. If the answer is vague or does not arrive, that is also useful information.
+
+Meera

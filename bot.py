@@ -78,6 +78,10 @@ Just send the note -> LinkedIn post
 Include every real fact and number you want used - I won't invent any. Each LinkedIn post comes with a QA report against your checklist."""
 
 
+def log(msg):
+    print(time.strftime("[%H:%M:%S] ") + msg, flush=True)
+
+
 def http_post(url, payload, headers=None, timeout=120):
     data = json.dumps(payload).encode()
     req = urllib.request.Request(url, data=data, method="POST")
@@ -199,9 +203,27 @@ Return an empty list if everything is supported."""
 def fact_check(post, note):
     raw = gemini(FACT_CHECK_PROMPT, [("user", f"NOTE:\n{note}\n\nPOST:\n{post}")], json_mode=True)
     try:
-        return [f'"{c["quote"]}" - {c["why"]}' for c in json.loads(raw).get("unsupported", [])]
+        return [(c["quote"], c["why"]) for c in json.loads(raw).get("unsupported", [])]
     except (ValueError, KeyError, TypeError, AttributeError):
         return []
+
+
+def remove_sentences(post, quotes):
+    """Delete every sentence containing one of the quotes. Returns (post, removed, not_found)."""
+    removed, found = [], set()
+    paragraphs = []
+    for para in re.split(r"\n\s*\n", post.strip()):
+        kept = []
+        for sentence in re.split(r"(?<=[.!?])\s+", para.strip()):
+            hit = next((q for q in quotes if q.strip(" .").lower() in sentence.lower()), None)
+            if hit:
+                removed.append(sentence)
+                found.add(hit)
+            else:
+                kept.append(sentence)
+        if kept:
+            paragraphs.append(" ".join(kept))
+    return "\n\n".join(paragraphs), removed, [q for q in quotes if q not in found]
 
 
 def revise(turns, post, issues):
@@ -224,11 +246,14 @@ def write_linkedin(note):
         revisions += 1
     unsupported = fact_check(post, note)
     if unsupported:
-        post = revise(turns, post, ["Unsupported claim: " + u for u in unsupported])
+        post = revise(turns, post, [f'Unsupported claim: "{q}" - {why}' for q, why in unsupported])
         revisions += 1
         unsupported = fact_check(post, note)
+    # Last resort: delete any sentence the fact-checker still flags.
+    post, removed, not_found = remove_sentences(post, [q for q, _ in unsupported])
     failures, warnings = qa_linkedin(post, note)
-    failures += ["Unsupported claim still in post: " + u for u in unsupported]
+    warnings += [f'Removed unsupported sentence: "{r}"' for r in removed]
+    failures += [f'Unsupported claim still in post: "{q}"' for q in not_found]
     return post, failures, warnings, revisions
 
 
@@ -247,6 +272,7 @@ def qa_report(failures, warnings, revisions):
 def handle(message):
     chat_id = message["chat"]["id"]
     text = (message.get("text") or "").strip()
+    log(f"Received from {message.get('from', {}).get('first_name', 'user')}: {text[:60]!r}")
     if not text:
         send_text(chat_id, "I can only read text messages for now. Type or paste your note.")
         return
@@ -276,9 +302,12 @@ def handle(message):
             post, failures, warnings, revisions = write_linkedin(note)
             send_text(chat_id, post)
             send_text(chat_id, qa_report(failures, warnings, revisions))
+            log(f"Sent LinkedIn post ({len(post.split())} words, {revisions} revisions, "
+                f"{len(failures)} failures)")
         if "newsletter" in wanted:
             tg("sendChatAction", chat_id=chat_id, action="typing")
             send_text(chat_id, gemini(NEWSLETTER_PROMPT, [("user", "Meera's raw note:\n\n" + note)]))
+            log("Sent newsletter")
     except urllib.error.HTTPError as e:
         print("Gemini error:", e.code, e.read()[:500])
         send_text(chat_id, f"Gemini returned an error ({e.code}). Try again in a minute.")
@@ -304,7 +333,7 @@ def main():
             print("Stopped.")
             return
         except Exception as e:
-            print("Polling error, retrying in 5s:", repr(e))
+            log(f"Polling error, retrying in 5s: {e!r}")
             time.sleep(5)
 
 
